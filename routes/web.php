@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\LoginController;
 use App\Models\Project;
 use App\Models\User                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ;
 
@@ -10,6 +11,14 @@ use App\Models\User                                                             
 Route::get('/', function () {
     return view('home');
 });
+
+Route::view('/login', "login")->name('login');
+Route::view('/register', "register")->name('register');
+Route::view('/private', "private")->middleware('auth')->name('private');
+
+Route::post('/validate-register', [LoginController::class, 'register'])->name('validate-register');
+Route::post('/init-session', [LoginController::class, 'login'])->name('init-session');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/tasksproject', function () {
     $project = Project::find(1);
