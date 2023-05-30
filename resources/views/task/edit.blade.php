@@ -15,15 +15,15 @@
                 <td><input type="text" name="state" value="{{ $task->state }}"/></td>
             </tr>
             <tr>
-                <td>User Id:</td>
-                <td><input type="text" name="user_id" value="{{ $task->user_id}}"/></td>
-            </tr>
-            <tr>
                 <td>Project Id:</td>
                 <td><input type="text" name="project_id" value="{{ $task->project_id}}"/></td>
             </tr>
-        </table>
+            <tr>
+                <td>User Id:</td>
+                <td><input type="text" name="user_id" value="{{ $task->user_id}}"/></td>
+            </tr>
             <tr><td><input type="submit" value="Update" /></td></tr>
+        </table>
     </form>
     <a href="{{ route('task.index') }}"><input type="button" value="Back"/></a>
 @endsection

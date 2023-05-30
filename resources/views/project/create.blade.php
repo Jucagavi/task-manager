@@ -32,7 +32,6 @@
                     @enderror --}}
                 </td>
             </tr>
-            
         </table>
         <input type="submit" value = "Create" />
     </form>

@@ -39,5 +39,5 @@
         </table>
         <input type="submit" value = "Create" />
     </form>
-    <a href="{{ route('task.index') }}">Back.<input type= </a>
+    <a href="{{ route('task.index') }}"><input type="button" value="Back"/></a>
 @endsection

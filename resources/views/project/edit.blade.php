@@ -2,25 +2,21 @@
 
 @section ('content')
 
-    <a href="{{ route ('project.index')}}">Back</a>
-    <form method="POST" action="{{ route ('project.update', $note->id) }}">
+    
+<form method="POST" action="{{ route ('project.update', $project->id) }}">
     @method('PUT')
     @csrf
-
-    <label>Title:</label>
-    <input type="text" name="title" value="{{ $note->title }}"/> 
-    @error('title')
-        <p style="color: red;">{{ $message }}</p>
-    @enderror
-
-    <label>Description:</label>
-    <input type="text" name="description" value="{{ $note->description }}"/>
-    @error('description')
-        <p style="color: red;">{{ $message }}</p>
-    @enderror
-
-    <input type="submit" value="Update" />
-
-    </form>
-
+    <table>
+        <tr>
+            <td>Project name:</td>
+            <td><input type="text" name="name" value="{{ $project->name }}"/></td>
+        </tr>
+        <tr>
+            <td>State:</td>
+            <td><input type="text" name="state" value="{{ $project->state }}"/></td>
+        </tr>
+        <tr><td><input type="submit" value="Update" /></td></tr>
+    </table>
+</form>
+<a href="{{ route('project.index') }}"><input type="button" value="Back"/></a>
 @endsection
