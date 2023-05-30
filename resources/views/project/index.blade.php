@@ -30,9 +30,10 @@
 
 @section('content')
 
+<?php $visibleboton=false; ?>
+
 <br><br>
-$user=Auth::user();
-echo $user;
+
 <table>    
     <thead>
     <tr>
@@ -52,13 +53,17 @@ echo $user;
         </td>
         <td> 
             <a href="{{ route ('project.edit', $project->id) }}">
-            <input type="button" value="Edit"></a>
+            @if ($visibleboton)
+                <input type="button" value="Edit"></a>
+            @endif
         </td>
             <form method="POST" action="{{ route('project.destroy', $project->id) }}">
                 @csrf
                 @method('DELETE')
                 <td>
-                <input type="submit" value="Delete" />
+                @if ($visibleboton)
+                    <input type="submit" value="Delete" />
+                @endif
                 </td>
             </form>
     </tr>

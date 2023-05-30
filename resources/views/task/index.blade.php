@@ -30,7 +30,10 @@
 
 @section('content')
 
+<?php $visibleboton=false; ?>
+
 <br><br>
+
 <table>    
     <thead>
     <tr>
@@ -54,13 +57,17 @@
         </td>
         <td> 
             <a href="{{ route ('task.edit', $task->id) }}">
-            <input type="button" value="Edit"></a>
+            @if ($visibleboton)
+                <input type="button" value="Edit"></a>
+            @endif
         </td>
             <form method="POST" action="{{ route('task.destroy', $task->id) }}">
                 @csrf
                 @method('DELETE')
                 <td>
-                <input type="submit" value="Delete" />
+                @if ($visibleboton)
+                    <input type="submit" value="Delete" />
+                @endif
                 </td>
             </form>
     </tr>
