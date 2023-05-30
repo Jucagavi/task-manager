@@ -1,13 +1,28 @@
 @extends('layouts.app')
+
 <style>
+    body {
+        background-color: #632432;
+        font-family: Arial;
+    }
     table {
         width: 100%;
-        background-color: #632432;
+        text-align: left;
+        background-color: white;
         border-collapse: collapse;
     }
     th, td {
-        border: solid 1px black;
+        padding: 10px;
     }
+    thead {
+        background-color: #246355;
+        border-bottom: solid 5px #0F362D;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #ddd;
+    }
+
 </style>
 
 @section('cabecera')
@@ -15,71 +30,33 @@
 
 @section('content')
 
-
 <br><br>
 <table>    
-    
+    <thead>
     <tr>
-        <th>Name Project</th><th>State Project</th>
+        <th>Name Task</th><th>State Task</th><th>Project Id</th><th>User Id</th><th></th><th></th>
     </tr>
-    @forelse($projects as $project)
+    </thead>
+    @forelse($tasks as $task)
     
     <tr>
         <td>
-            {{-- <a href="{{ route ('note.show', $note->id)}}">{{ $note->title }}</a> --}}
-            {{ $project->name }}
+            {{ $task->name }}
         </td>
         <td>
-            {{-- <a href="{{ route ('note.show', $note->id)}}">{{ $note->description }}</a> --}}
-            {{ $project->state }}
+            {{ $task->state }}
+        </td>
+        <td>
+            {{ $task->project_id }}
+        </td>
+        <td>
+            {{ $task->user_id }}
         </td>
         <td> 
-            <a href="{{ route ('project.edit', $project->id) }}">
+            <a href="{{ route ('task.edit', $task->id) }}">
             <input type="button" value="Edit"></a>
         </td>
-            <form method="POST" action="{{ route('project.destroy', $project->id) }}">
-                @csrf
-                @method('DELETE')
-       @extends('layouts.app')
-<style>
-    table {
-        width: 100%;
-        background-color: #632432;
-        border-collapse: collapse;
-    }
-    th, td {
-        border: solid 1px black;
-    }
-</style>
-
-@section('cabecera')
-@endsection
-
-@section('content')
-
-
-<br><br>
-<table>    
-    
-    <tr>
-        <th>Name Project</th><th>State Project</th>
-    </tr>
-    @forelse($projects as $project)
-    
-    <tr>
-        <td>
-            {{-- <a href="{{ route ('note.show', $note->id)}}">{{ $note->title }}</a> --}}
-            {{ $project->name }}
-        </td>
-        <td>
-            {{-- <a href="{{ route ('note.show', $note->id)}}">{{ $note->description }}</a> --}}
-            {{ $project->state }}
-        </td>
-        <td> 
-            <a href="{{ route ('project.edit', $project->id) }}">
-            <input type="button" value="Edit"></a>
-        </td>
-            <form method="POST" action="{{ route('project.destroy', $project->id) }}">
+            <form method="POST" action="{{ route('task.destroy', $task->id) }}">
                 @csrf
                 @method('DELETE')
                 <td>
@@ -91,17 +68,7 @@
         <p>No data.</p>    
     @endforelse
 </table>
-<a href="{{ route('project.create') }}">Create new project.</a>
+<a href="{{ route('task.create') }}"><input type="button" value="Create new task"></a>
+<a href="{{ url('/') }}"><input type="button" value="Back"/></a>
 
-@endsection         <td>
-                <input type="submit" value="Delete" />
-                </td>
-            </form>
-    </tr>
-    @empty
-        <p>No data.</p>    
-    @endforelse
-</table>
-<a href="{{ route('project.create') }}">Create new project.</a>
-
-@endsection
+@endsection         
