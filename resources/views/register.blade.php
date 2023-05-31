@@ -1,3 +1,5 @@
+@extends('layouts.app')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +9,10 @@
     <title>Register</title>
 </head>
 <body>
+    @section('cabecera')
+    @endsection
+    
+    @section('content')
     <h2>Register</h2>
     <form method="POST" action="{{ route('validate-register') }}">
         @csrf
@@ -21,5 +27,7 @@
     </form>
     <br>
     <a href="{{ route('login') }}"><input type="button" value="Back"/></a>
+    @endsection
+
 </body>
 </html>

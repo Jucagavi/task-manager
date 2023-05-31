@@ -20,7 +20,7 @@ class LoginController extends Controller
         
         Auth::login($user);
 
-        return redirect(route('private'));
+        return redirect(route('home'));
 
     }
 
@@ -35,7 +35,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
-            return redirect()->intended(route('private'));
+            return redirect()->intended(route('home'));
         } else {
             return redirect('login');
         }

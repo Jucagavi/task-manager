@@ -72,7 +72,7 @@
     @endforelse
 </table>
 <a href="{{ route('project.create') }}"><input type="button" value="Create new project"></a>
-<a href="{{ url('/') }}"><input type="button" value="Back"/></a>
+<a href="{{ url('/home') }}"><input type="button" value="Back"/></a>
 
 
 {{-- $user=Auth::user();

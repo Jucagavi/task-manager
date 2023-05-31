@@ -76,6 +76,6 @@
     @endforelse
 </table>
 <a href="{{ route('task.create') }}"><input type="button" value="Create new task"></a>
-<a href="{{ url('/') }}"><input type="button" value="Back"/></a>
+<a href="{{ url('/home') }}"><input type="button" value="Back"/></a>
 
 @endsection         

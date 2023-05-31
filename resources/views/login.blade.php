@@ -1,3 +1,5 @@
+@extends('layouts.app')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +9,10 @@
     <title>Login</title>
 </head>
 <body>
+    @section('cabecera')
+    @endsection
+    
+    @section('content')
     <h2>Login</h2>
     <form method="POST" action="{{ route('init-session')}}">
         @csrf
@@ -18,5 +24,6 @@
         <p>¿No tienes cuenta? <a href="{{ route('register') }}">Register</a></p>
         <button type="submit">Enter</button>
     </form>
+    @endsection
 </body>
 </html>
