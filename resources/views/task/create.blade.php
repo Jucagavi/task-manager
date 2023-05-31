@@ -21,12 +21,15 @@
             </tr>
 
             <tr>
-                <td>State: </td>
+                <td>Status:</td>
                 <td> 
-                    <input type=text name="state" />
-                    {{-- @error('description')
-                        <p style="color: red;">{{ $message }}</p>
-                    @enderror --}}
+                    <select name="state" required="required">
+                        <option value="">-- Eliga estado --</option>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="En progreso">En progreso</option>
+                        <option value="Finalizado">Finalizado</option>
+                    </select>
+                    {{-- <input type=text name="state" /> --}}
                 </td>
             </tr>
             <tr>

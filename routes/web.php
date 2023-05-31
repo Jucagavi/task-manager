@@ -20,8 +20,8 @@ Route::post('/validate-register', [LoginController::class, 'register'])->name('v
 Route::post('/init-session', [LoginController::class, 'login'])->name('init-session');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/tasksproject', function () {
-    $project = Project::find(1);
+Route::get('/projects/{project}/tasks', function () {
+    $project = Project::find();
     // $task = Task::find(1);
     // echo $task->project->name;
     

@@ -11,8 +11,16 @@
                 <td><input type="text" name="name" value="{{ $task->name }}"/></td>
             </tr>
             <tr>
-                <td>State:</td>
-                <td><input type="text" name="state" value="{{ $task->state }}"/></td>
+                <td>Status:</td>
+                <td>
+                    <select name="state" required="required">
+                    <option value="">-- Eliga estado --</option>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="En progreso">En progreso</option>
+                    <option value="Finalizado">Finalizado</option>
+                    </select>
+                </td>
+                {{-- <td><input type="text" name="state" value="{{ $task->state }}"/></td> --}}
             </tr>
             <tr>
                 <td>Project Id:</td>

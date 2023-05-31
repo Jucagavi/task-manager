@@ -29,15 +29,18 @@
 @endsection
 
 @section('content')
-
+{{ Auth::user()->role }}
 <?php $visibleboton=false; ?>
+@if(Auth::user()->role=='admin')
+    <?php $visibleboton=true; ?>
+@endif
 
 <br><br>
 
 <table>    
     <thead>
     <tr>
-        <th>Name Task</th><th>State Task</th><th>Project Id</th><th>User Id</th><th></th><th></th>
+        <th>Name Task</th><th>Status</th><th>Project Id</th><th>User Id</th><th></th><th></th>
     </tr>
     </thead>
     @forelse($tasks as $task)
