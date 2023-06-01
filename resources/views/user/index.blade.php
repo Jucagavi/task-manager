@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 <style>
     body {
         background-color: #632432;
@@ -25,12 +26,9 @@
 </style>
 
 @section('cabecera')
-    
 @endsection
 
 @section('content')
-
-<?php $visibleboton=false; ?>
 {{ Auth::user()->role }}
 <?php $visibleboton=false; ?>
 @if(Auth::user()->role=='admin')
@@ -42,27 +40,31 @@
 <table>    
     <thead>
     <tr>
-        <th>Name Project</th><th>State Project</th><th></th><th></th>
+        <th>Id</th><th>Name</th><th>Email</th><th>Role</th><th></th><th></th>
     </tr>
     </thead>
-    @forelse($projects as $project)
+    @forelse($users as $user)
     
     <tr>
         <td>
-            {{-- <a href="{{ route ('note.show', $note->id)}}">{{ $note->title }}</a> --}}
-            {{ $project->name }}
+            {{ $user->id }}
         </td>
         <td>
-            {{-- <a href="{{ route ('note.show', $note->id)}}">{{ $note->description }}</a> --}}
-            {{ $project->state }}
+            {{ $user->name }}
+        </td>
+        <td>
+            {{ $user->email }}
+        </td>
+        <td>
+            {{ $user->role }}
         </td>
         <td> 
-            <a href="{{ route ('project.edit', $project->id) }}">
+            <a href="{{ route ('user.edit', $user->id) }}">
             @if ($visibleboton)
                 <input type="button" value="Edit"></a>
             @endif
         </td>
-            <form method="POST" action="{{ route('project.destroy', $project->id) }}">
+            <form method="POST" action="{{ route('user.destroy', $user->id) }}">
                 @csrf
                 @method('DELETE')
                 <td>
@@ -76,18 +78,7 @@
         <p>No data.</p>    
     @endforelse
 </table>
-<a href="{{ route('project.create') }}"><input type="button" value="Create new Project"></a>
+<a href="{{ route('user.create') }}"><input type="button" value="Create new User"></a>
 <a href="{{ url('/home') }}"><input type="button" value="Back"/></a>
 
-
-{{-- $user=Auth::user();
-    if(!Empty($user)) {
-        if($user->role_id==1) {
-            return view('administrador');
-        } else {
-            return view('worker');
-        }
-    } else {
-        return view('welcome');
-    } --}}
-@endsection
+@endsection         
