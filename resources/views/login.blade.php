@@ -21,7 +21,7 @@
         <label>Password:</label>
         <input type="password" name="password" required>
         <br><br>
-        <p>¿No tienes cuenta? <a href="{{ route('register') }}">Register</a></p>
+        {{-- <p>¿No tienes cuenta? <a href="{{ route('register') }}">Register</a></p> --}}
         <button type="submit">Enter</button>
     </form>
     @endsection

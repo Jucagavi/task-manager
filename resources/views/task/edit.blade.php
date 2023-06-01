@@ -14,7 +14,7 @@
                 <td>Status:</td>
                 <td>
                     <select name="state" required="required">
-                    <option value="">-- Eliga estado --</option>
+                    <option value="{{ $task->state }}">{{ $task->state }}</option>
                     <option value="Pendiente">Pendiente</option>
                     <option value="En progreso">En progreso</option>
                     <option value="Finalizado">Finalizado</option>
@@ -23,8 +23,16 @@
                 {{-- <td><input type="text" name="state" value="{{ $task->state }}"/></td> --}}
             </tr>
             <tr>
-                <td>Project Id:</td>
-                <td><input type="text" name="project_id" value="{{ $task->project_id}}"/></td>
+                <td>Project:</td>
+                <td> 
+                    <select name="project_id" required="required">
+                        <option value="{{ $task->project_id }}">{{ $task->project->name }}</option>
+                        @foreach ($projects as $project)
+                            <option value="{{ $project->id }}">{{ $project->name }}</option>    
+                        @endforeach                        
+                    </select>
+                </td>
+                {{-- <td><input type="text" name="project_id" value="{{ $task->project_id}}"/></td> --}}
             </tr>
             <tr>
                 <td>User Id:</td>

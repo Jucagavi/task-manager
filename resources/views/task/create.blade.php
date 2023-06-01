@@ -36,8 +36,15 @@
                 <td>User Id: </td>
                 <td><input type="text" name="user_id"/></td>
             <tr>
-                <td>Project Id: </td>
-                <td><input type="text" name="project_id"/></td>
+                <td>Project: </td>
+                <td> 
+                    <select name="project_id" required="required">
+                        <option value="">-- Eliga proyecto --</option>
+                        @foreach ($projects as $project)
+                            <option value="{{ $project->id }}">{{ $project->name }}</option>    
+                        @endforeach                        
+                    </select>
+                </td>
             </tr>
         </table>
         <input type="submit" value = "Create" />
