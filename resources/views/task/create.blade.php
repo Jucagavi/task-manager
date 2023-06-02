@@ -13,7 +13,7 @@
             <tr>
                 <td>Task name: </td>
                 <td>
-                    <input type=text name="name" />
+                    <input type=text name="name" required="required"/>
                     {{-- @error('title')
                         <p style="color: red;">{{ $message }}</p>
                     @enderror --}}
@@ -29,12 +29,18 @@
                         <option value="En progreso">En progreso</option>
                         <option value="Finalizado">Finalizado</option>
                     </select>
-                    {{-- <input type=text name="state" /> --}}
                 </td>
             </tr>
             <tr>
-                <td>User Id: </td>
-                <td><input type="text" name="user_id"/></td>
+                <td>User: </td>
+                <td>
+                <select name="user_id" required="required">
+                        <option value="">-- Eliga usuario --</option>
+                        @foreach ($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>    
+                        @endforeach                        
+                </select>
+                </td>
             <tr>
                 <td>Project: </td>
                 <td> 

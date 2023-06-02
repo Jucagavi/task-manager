@@ -9,10 +9,10 @@
     <table>
         <tr>
             <td>Project name:</td>
-            <td><input type="text" name="name" value="{{ $project->name }}"/></td>
+            <td><input type="text" name="name" value="{{ $project->name }}" required="required"/></td>
         </tr>
         <tr>
-            <td>State:</td>
+            <td>Status:</td>
             <td><input type="text" name="state" value="{{ $project->state }}"/></td>
         </tr>
         <tr><td><input type="submit" value="Update" /></td></tr>

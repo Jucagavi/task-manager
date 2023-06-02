@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Models\Project;
 use App\Models\Task;
+use App\Models\User;
 
 class TaskController extends Controller
 {
@@ -15,7 +16,8 @@ class TaskController extends Controller
 
     public function create() {
         $projects=Project::all();
-        return view('task.create', compact('projects'));
+        $users=User::all();
+        return view('task.create', compact('projects', 'users'));
     }
 
     public function store (Request $request) {
@@ -31,7 +33,8 @@ class TaskController extends Controller
 
     public function edit (Task $task) {
         $projects=Project::all();
-        return view('task.edit', compact('task', 'projects'));
+        $users=User::all();
+        return view('task.edit', compact('task', 'projects', 'users'));
     }
 
     public function update (Request $request, Task $task) {

@@ -8,7 +8,7 @@
         <table>
             <tr>
                 <td>Task name:</td>
-                <td><input type="text" name="name" value="{{ $task->name }}"/></td>
+                <td><input type="text" name="name" value="{{ $task->name }}" required="required"/></td>
             </tr>
             <tr>
                 <td>Status:</td>
@@ -36,7 +36,15 @@
             </tr>
             <tr>
                 <td>User Id:</td>
-                <td><input type="text" name="user_id" value="{{ $task->user_id}}"/></td>
+                <td>
+                    <select name="user_id" required="required">
+                            <option value="">-- Eliga usuario --</option>
+                            @foreach ($users as $user)
+                                <option value="{{ $user->id }}">{{ $user->name }}</option>    
+                            @endforeach                        
+                    </select>
+                    </td>
+                {{-- <td><input type="text" name="user_id" value="{{ $task->user_id}}"/></td> --}}
             </tr>
             <tr><td><input type="submit" value="Update" /></td></tr>
         </table>

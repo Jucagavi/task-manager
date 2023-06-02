@@ -16,7 +16,7 @@
             <tr>
                 <td>Name:</td>
                 <td>
-                    <input type=text name="name" />
+                    <input type=text name="name" required="required"/>
                     {{-- @error('title')
                         <p style="color: red;">{{ $message }}</p>
                     @enderror --}}
@@ -24,7 +24,7 @@
             </tr>
 
             <tr>
-                <td>State:</td>
+                <td>Status:</td>
                 <td> 
                     <input type=text name="state" />
                     {{-- @error('description')
