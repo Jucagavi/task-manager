@@ -46,10 +46,10 @@
                     </td>
                 {{-- <td><input type="text" name="user_id" value="{{ $task->user_id}}"/></td> --}}
             </tr>
-            <tr><td><input type="submit" value="Update" /></td></tr>
+            <tr><td><input type="submit" value="Update" class="btn btn-primary"/></td></tr>
         </table>
     </form>
-    <a href="{{ route('task.index') }}"><input type="button" value="Back"/></a>
+    <a href="{{ route('task.index') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
 @endsection
 
 

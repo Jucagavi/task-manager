@@ -1,15 +1,16 @@
 @extends('layouts.app')
 
 <style>
-    body {
+    /* body {
         background-color: #632432;
         font-family: Arial;
-    }
+    } */
     table {
         width: 100%;
         text-align: left;
         background-color: white;
         border-collapse: collapse;
+        color: black;
     }
     th, td {
         padding: 10px;
@@ -61,7 +62,7 @@
         <td> 
             <a href="{{ route ('user.edit', $user->id) }}">
             @if ($visibleboton)
-                <input type="button" value="Edit"></a>
+                <input type="button" value="Edit" class="btn btn-secondary"></a>
             @endif
         </td>
             <form method="POST" action="{{ route('user.destroy', $user->id) }}">
@@ -69,7 +70,7 @@
                 @method('DELETE')
                 <td>
                 @if ($visibleboton)
-                    <input type="submit" value="Delete" />
+                    <input type="submit" value="Delete" class="btn btn-danger" />
                 @endif
                 </td>
             </form>
@@ -78,7 +79,7 @@
         <p>No data.</p>    
     @endforelse
 </table>
-<a href="{{ route('user.create') }}"><input type="button" value="Create new User"></a>
-<a href="{{ url('/home') }}"><input type="button" value="Back"/></a>
+<a href="{{ route('user.create') }}"><input type="button" class="btn btn-primary" value="Create new User"></a>
+<a href="{{ url('/home') }}"><input type="button" value="Back" class="btn btn-primary" /></a>
 
 @endsection         

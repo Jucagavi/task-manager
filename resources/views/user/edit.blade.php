@@ -18,10 +18,10 @@
                 <td>Role:</td>
                 <td><input type="text" name="role" value="{{ $user->role }}"/></td>
             </tr>
-            <tr><td><input type="submit" value="Update" /></td></tr>
+            <tr><td><input type="submit" value="Update" class="btn btn-primary"/></td></tr>
         </table>
     </form>
-    <a href="{{ route('user.index') }}"><input type="button" value="Back"/></a>
+    <a href="{{ route('user.index') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
 @endsection
 
 

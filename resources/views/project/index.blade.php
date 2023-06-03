@@ -1,13 +1,14 @@
 @extends('layouts.app')
 <style>
-    body {
+    /* body {
         background-color: #632432;
         font-family: Arial;
-    }
+    } */
     table {
         width: 100%;
         text-align: left;
         background-color: white;
+        color: black;   
         border-collapse: collapse;
     }
     th, td {
@@ -59,7 +60,7 @@
         <td> 
             <a href="{{ route ('project.edit', $project->id) }}">
             @if ($visibleboton)
-                <input type="button" value="Edit"></a>
+                <input type="button" value="Edit" class="btn btn-secondary"></a>
             @endif
         </td>
             <form method="POST" action="{{ route('project.destroy', $project->id) }}">
@@ -67,7 +68,7 @@
                 @method('DELETE')
                 <td>
                 @if ($visibleboton)
-                    <input type="submit" value="Delete" />
+                    <input type="submit" value="Delete" class="btn btn-danger"/>
                 @endif
                 </td>
             </form>
@@ -76,8 +77,8 @@
         <p>No data.</p>    
     @endforelse
 </table>
-<a href="{{ route('project.create') }}"><input type="button" value="Create new Project"></a>
-<a href="{{ url('/home') }}"><input type="button" value="Back"/></a>
+<a href="{{ route('project.create') }}"><input type="button" class="btn btn-primary" value="Create new Project"></a>
+<a href="{{ url('/home') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
 
 
 {{-- $user=Auth::user();
