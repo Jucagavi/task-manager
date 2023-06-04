@@ -53,7 +53,9 @@
                 </td>
             </tr>
         </table>
+        <br>
         <input type="submit" value = "Create" class="btn btn-primary"/>
     </form>
+    <br>
     <a href="{{ route('task.index') }}"><input type="button" class="btn btn-primary" value="Back"/></a>
 @endsection

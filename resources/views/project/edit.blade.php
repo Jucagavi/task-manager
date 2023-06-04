@@ -15,8 +15,10 @@
             <td>Status:</td>
             <td><input type="text" name="state" value="{{ $project->state }}"/></td>
         </tr>
-        <tr><td><input type="submit" value="Update" class="btn btn-primary" /></td></tr>
     </table>
+    <br>
+    <input type="submit" value="Update" class="btn btn-primary" />
 </form>
+<br>
 <a href="{{ route('project.index') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
 @endsection

@@ -32,12 +32,12 @@
 </head>
 
 <body class="bg-dark text-white">
-    <div class="cabecera">
+    <div class="container text-center">
         @yield('cabecera')
         <h1>Task Manager</h1>
     </div>
 
-    <div class="container">
+    <div class="container align-center p-5">
         @yield('content')
     </div>
     

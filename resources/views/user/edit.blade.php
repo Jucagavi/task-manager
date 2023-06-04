@@ -16,11 +16,20 @@
             </tr>
             <tr>
                 <td>Role:</td>
-                <td><input type="text" name="role" value="{{ $user->role }}"/></td>
+                <td>
+                    <select name="role" required="required">
+                        <option value="{{ $user->role }}">{{ $user->role }}</option>
+                        <option value="">-- Elija role --</option>
+                        <option value="admin">Admin</option>
+                        <option value="worker">Worker</option>
+                    </select>
+                </td>
             </tr>
-            <tr><td><input type="submit" value="Update" class="btn btn-primary"/></td></tr>
         </table>
+        <br>
+        <input type="submit" value="Update" class="btn btn-primary"/>
     </form>
+    <br>
     <a href="{{ route('user.index') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
 @endsection
 
