@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Task;
 
 class UserController extends Controller
 {
@@ -20,6 +21,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->password = $request->password;
         $user->role = $request->role;
         
         $user->save();
@@ -41,6 +43,10 @@ class UserController extends Controller
     // }
 
     public function destroy (User $user) {
+        $tasks = Task::all();
+        foreach ($user->tasks as $task) {
+            return redirect()->route('user.index');
+        }
         $user->delete();
         return redirect()->route('user.index');
     }
