@@ -50,6 +50,12 @@ class ProjectController extends Controller
     }
 
     public function destroy (Project $project) {
+        $tasks = Task::all();
+        foreach ($project->tasks as $task) {
+            if ($task->state!="Pendiente"){ 
+                return redirect()->route('project.index');
+            }
+        }
         $project->delete();
         return redirect()->route('project.index');
     }

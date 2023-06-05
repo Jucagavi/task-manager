@@ -30,7 +30,7 @@
 @endsection
 
 @section('content')
-{{ Auth::user()->role }}
+{{-- {{ Auth::user()->role }} --}}
 <?php $visibleboton=false; ?>
 @if(Auth::user()->role=='admin')
     <?php $visibleboton=true; ?>

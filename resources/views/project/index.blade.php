@@ -32,7 +32,7 @@
 @section('content')
 
 <?php $visibleboton=false; ?>
-{{ Auth::user()->role }}
+{{-- {{ Auth::user()->role }} --}}
 <?php $visibleboton=false; ?>
 @if(Auth::user()->role=='admin')
     <?php $visibleboton=true; ?>
@@ -43,12 +43,15 @@
 <table>    
     <thead>
     <tr>
-        <th>Name Project</th><th>State Project</th><th></th><th></th>
+        <th>Id</th><th>Name Project</th><th>State Project</th><th></th><th></th>
     </tr>
     </thead>
     @forelse($projects as $project)
     
     <tr>
+        <td>
+            {{ $project->id }}
+        </td>
         <td>
             {{-- <a href="{{ route ('note.show', $note->id)}}">{{ $note->title }}</a> --}}
             {{ $project->name }}
