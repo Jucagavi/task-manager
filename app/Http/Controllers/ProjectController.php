@@ -43,10 +43,10 @@ class ProjectController extends Controller
 
     // vista show de pruebas
     public function show(Int $id) {
-        $projects = Project::all();
+        $project = Project::find($id);
         $tasks = Task::all();
-        $user = User::find($id);
-        return view('project.show', compact('projects', 'tasks', 'user'));
+        // $user = User::find($id);
+        return view('project.show', compact('project', 'tasks'));
     }
 
     public function destroy (Project $project) {

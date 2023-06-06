@@ -1,26 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Proyectos</h2>
-    <?php 
+@extends('layouts.app')
+<style>
+    table {
+        width: 100%;
+        text-align: left;
+        background-color: white;
+        color: black;   
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 10px;
+    }
+    thead {
+        background-color: #246355;
+        border-bottom: solid 5px #0F362D;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #ddd;
+    }
+</style>
+
+@section('cabecera')
+    
+@endsection
+
+@section('content')
+
+    <h2>Tareas</h2>
+    <?php
+        $user=Auth::user();
         echo "Usuario: ".$user->name."<br>";
-        foreach ($projects as $project) {
-            // echo "Proyecto: ".$project->name."<br>";
-            foreach ($project->tasks as $task) {
-                // echo "Tarea: ".$task->user_id."<br>";
-                if ($task->user_id==$user->id){
-                    echo "Proyecto: ".$project->id." ".$project->name."<br>";
-                    break;            
-                }
-            }
-            echo "<br>";
-        }
     ?>
-</body>
-</html>
+    <br>
+    <table>    
+        <thead>
+        <tr>
+            <th>Id</th><th>Task name</th><th>Status</th><th>Started</th><th>Updated</th>
+        </tr>
+        </thead>
+        @foreach ($project->tasks as $task)
+            {{-- echo "Proyecto: ".$project->id." ".$project->name."<br>"; --}}
+            <tr>
+                <td>
+                    {{ $task->id }}
+                </td>
+                <td>
+                    {{ $task->name }}
+                </td>
+                <td>
+                    {{ $task->state }}
+                </td>
+                <td>
+                    {{ $task->started_at }}
+                </td>
+            </tr>
+        @endforeach
+    </table>            
+    <br>
+    <a href="{{ route('project.index') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
+@endsection

@@ -14,8 +14,8 @@ Route::get('/', function () {
 });
 
 Route::view('/login', "login")->name('login');
-Route::view('/register', "register")->name('register');
-Route::view('/private', "private")->middleware('auth')->name('private');
+// Route::view('/register', "register")->name('register');
+// Route::view('/private', "private")->middleware('auth')->name('private');
 
 Route::post('/validate-register', [LoginController::class, 'register'])->name('validate-register');
 Route::post('/init-session', [LoginController::class, 'login'])->name('init-session');
@@ -67,7 +67,7 @@ Route::get('/project/create', [ProjectController::class, 'create'])->middleware(
 Route::post('/project/store', [ProjectController::class, 'store'])->middleware('auth')->name('project.store');
 Route::get('/project/edit/{project}', [ProjectController::class, 'edit'])->middleware('auth')->name('project.edit');
 Route::put('project/update/{project}', [ProjectController::class, 'update'])->middleware('auth')->name('project.update');
-Route::get('/project/show/{user}', [ProjectController::class, 'show'])->name('project.show');
+Route::get('/project/show/{project}', [ProjectController::class, 'show'])->middleware('auth')->name('project.show');
 Route::delete('project/destroy/{project}', [ProjectController::class, 'destroy'])->middleware('auth')->name('project.destroy');
 
 Route::get('/task', [TaskController::class, 'index'])->middleware('auth')->name('task.index');

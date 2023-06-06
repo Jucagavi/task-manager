@@ -1,9 +1,5 @@
 @extends('layouts.app')
 <style>
-    /* body {
-        background-color: #632432;
-        font-family: Arial;
-    } */
     table {
         width: 100%;
         text-align: left;
@@ -22,7 +18,6 @@
     tr:nth-child(even) {
         background-color: #ddd;
     }
-
 </style>
 
 @section('cabecera')
@@ -36,11 +31,9 @@
 <?php $visibleboton=false; ?>
 @if(Auth::user()->role=='admin')
     <?php $visibleboton=true; ?>
-@endif
+    <br><br>
 
-<br><br>
-
-<table>    
+    <table>    
     <thead>
     <tr>
         <th>Id</th><th>Name Project</th><th>State Project</th><th></th><th></th>
@@ -53,11 +46,10 @@
             {{ $project->id }}
         </td>
         <td>
-            {{-- <a href="{{ route ('note.show', $note->id)}}">{{ $note->title }}</a> --}}
-            {{ $project->name }}
+            <a href="{{ route ('project.show', $project->id)}}">{{ $project->name }}</a>
         </td>
         <td>
-            {{-- <a href="{{ route ('note.show', $note->id)}}">{{ $note->description }}</a> --}}
+            {{-- <a href="{{ route ('project.show', $project->id)}}">{{ $project->state }}</a> --}}
             {{ $project->state }}
         </td>
         <td> 
@@ -79,19 +71,44 @@
     @empty
         <p>No data.</p>    
     @endforelse
-</table>
-<a href="{{ route('project.create') }}"><input type="button" class="btn btn-primary" value="Create new Project"></a>
-<a href="{{ url('/home') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
+    </table>
+    <a href="{{ route('project.create') }}"><input type="button" class="btn btn-primary" value="Create new Project"></a>
+    <a href="{{ url('/home') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
+@else
+    <h2>Proyectos</h2>
+    <?php
+        $user=Auth::user();
+        echo "Usuario: ".$user->name."<br>";
+    ?>
+    <br>
+    <table>    
+        <thead>
+        <tr>
+            <th>Id</th><th>Name Project</th><th>Status</th><th></th>
+        </tr>
+        </thead>
+        @foreach ($projects as $project)
+            @foreach ($project->tasks as $task)
+            @if ($task->user_id==$user->id)
+                {{-- echo "Proyecto: ".$project->id." ".$project->name."<br>"; --}}
+                <tr>
+                    <td>
+                        {{ $project->id }}
+                    </td>
+                    <td>
+                        {{ $project->name }}
+                    </td>
+                    <td>
+                        {{ $project->state }}
+                    </td>
+                </tr>
+                {{-- break;             --}}
+            @endif
+            @endforeach
+        @endforeach
+    </table>            
+    {{-- <?php redirect()->route('project.show'); ?> --}}
+    <a href="{{ url('/home') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
+@endif
 
-
-{{-- $user=Auth::user();
-    if(!Empty($user)) {
-        if($user->role_id==1) {
-            return view('administrador');
-        } else {
-            return view('worker');
-        }
-    } else {
-        return view('welcome');
-    } --}}
 @endsection
