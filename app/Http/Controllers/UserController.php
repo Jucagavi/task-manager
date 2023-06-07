@@ -44,12 +44,13 @@ class UserController extends Controller
     // }
 
     public function destroy (User $user) {
-        $tasks = Task::all();
-        foreach ($user->tasks as $task) {
+        $tasks = Task::all()->where('user_id', $user->id);
+        if (count($tasks)===0) {
+            $user->delete();
+            return redirect()->route('user.index');
+        } else { 
             return redirect()->route('user.index');
         }
-        $user->delete();
-        return redirect()->route('user.index');
     }
 
 }

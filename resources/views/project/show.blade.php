@@ -26,11 +26,12 @@
 
 @section('content')
 
-    <h2>Tareas</h2>
+    <h2>Tareas del proyecto: {{ $project->name }}</h2>
     <?php
         $user=Auth::user();
         echo "Usuario: ".$user->name."<br>";
     ?>
+    
     <br>
     <table>    
         <thead>

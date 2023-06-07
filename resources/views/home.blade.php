@@ -1,15 +1,5 @@
 @extends('layouts.app')
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-        <title>Task Manager</title>
-    </head>
-    <body>
     <?php $visibleboton=false; ?>
     @if(Auth::user()->role=='admin')
         <?php $visibleboton=true; ?>
@@ -48,6 +38,4 @@
         <br><br>
         <a href="{{ route('logout') }}"><input type="button" value="Exit"/></a> --}}
         @endsection
-        
-    </body>
-</html>
+
