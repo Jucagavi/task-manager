@@ -27,6 +27,7 @@ class UserController extends Controller
         
         $user->save();
 
+        session()->flash('success', 'Usuario creado correctamente.');
         return redirect()->route('user.index');
     }
 
@@ -47,8 +48,10 @@ class UserController extends Controller
         $tasks = Task::all()->where('user_id', $user->id);
         if (count($tasks)===0) {
             $user->delete();
+            session()->flash('success', 'Usuario eliminado correctamente.');
             return redirect()->route('user.index');
         } else { 
+            session()->flash('failure', 'No se puede eliminar este usuario, tiene tareas asignadas.');
             return redirect()->route('user.index');
         }
     }

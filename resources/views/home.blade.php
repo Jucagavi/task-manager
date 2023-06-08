@@ -13,14 +13,14 @@
     
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route ('project.index') }}">CRUD PROJECT</a>
+                    <a class="nav-link" href="{{ route ('project.index') }}">PROJECTS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route ('task.index') }}">CRUD TASK</a>
+                    <a class="nav-link" href="{{ route ('task.index') }}">TASKS</a>
                 </li>
                 <li class="nav-item">
                     @if ($visibleboton)
-                        <a class="nav-link" href="{{ route ('user.index') }}">CRUD USER</a>
+                        <a class="nav-link" href="{{ route ('user.index') }}">USERS</a>
                     @endif
                 </li>
                 <li class="nav-item">

@@ -30,6 +30,9 @@
 @endsection
 
 @section('content')
+
+@include('alerts.alerts')
+
 {{ Auth::user()->role }}
 <?php $visibleboton=false; ?>
 @if(Auth::user()->role=='admin')
