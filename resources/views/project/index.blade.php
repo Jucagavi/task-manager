@@ -26,6 +26,8 @@
 
 @section('content')
 
+@include('alerts.alerts')
+
 {{-- <?php $visibleboton=false; ?> --}}
 
 <h4>Proyectos</h4>
