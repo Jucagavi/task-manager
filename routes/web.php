@@ -5,8 +5,8 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
-use App\Models\Project;
-use App\Models\User;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ;
+// use App\Models\Project;
+// use App\Models\User;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ;
 
 
 Route::get('/', function () {
@@ -21,37 +21,7 @@ Route::post('/validate-register', [LoginController::class, 'register'])->name('v
 Route::post('/init-session', [LoginController::class, 'login'])->name('init-session');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/projects/{project}/tasks', function () {
-    $project = Project::find();
-    // $task = Task::find(1);
-    // echo $task->project->name;
-    
-    foreach ($project->tasks as $task) {
-        echo $task->name."<br>";
-    }
-});
-
-Route::get('/tasksuser', function () {
-    $user = User::find(1);
-    // $task = Task::find(1);
-    // echo $task->project->name;
-    
-    foreach ($user->tasks as $task) {
-        echo $task->name."<br>";
-    }
-});
-
-Route::get('/muchas', function () {
-    $user = User::find(1);
-    // $task = Task::find(1);
-    // echo $task->project->name;
-    
-    foreach ($user->tasks as $task) {
-        echo $task->name."<br>";
-    }
-});
-
-Route::view('/home', "home")->middleware('auth')->name('home');
+// Route::view('/home', "home")->middleware('auth')->name('home');
 
 Route::get('/user', [UserController::class, 'index'])->middleware('auth')->name('user.index');
 Route::get('/user/create', [UserController::class, 'create'])->middleware('auth')->name('user.create');

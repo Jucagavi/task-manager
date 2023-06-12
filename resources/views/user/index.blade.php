@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
 <style>
-    /* body {
-        background-color: #632432;
-        font-family: Arial;
-    } */
     table {
         width: 100%;
         text-align: left;
@@ -48,26 +44,25 @@
     </tr>
     </thead>
     @forelse($users as $user)
-    
-    <tr>
-        <td>
+        <tr>
+            <td>
             {{ $user->id }}
-        </td>
-        <td>
+            </td>
+            <td>
             {{ $user->name }}
-        </td>
-        <td>
+            </td>
+            <td>
             {{ $user->email }}
-        </td>
-        <td>
+            </td>
+            <td>
             {{ $user->role }}
-        </td>
-        <td> 
+            </td>
+            <td> 
             <a href="{{ route ('user.edit', $user->id) }}">
             @if ($visibleboton)
                 <input type="button" value="Edit" class="btn btn-secondary"></a>
             @endif
-        </td>
+            </td>
             <form method="POST" action="{{ route('user.destroy', $user->id) }}">
                 @csrf
                 @method('DELETE')
@@ -77,12 +72,12 @@
                 @endif
                 </td>
             </form>
-    </tr>
+        </tr>
     @empty
         <p>No data.</p>    
     @endforelse
 </table>
 <a href="{{ route('user.create') }}"><input type="button" class="btn btn-primary" value="Create new User"></a>
-<a href="{{ url('/home') }}"><input type="button" value="Back" class="btn btn-primary" /></a>
+<a href="{{ route('project.index') }}"><input type="button" value="Back" class="btn btn-primary" /></a>
 
 @endsection         

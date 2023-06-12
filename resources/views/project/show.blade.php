@@ -36,7 +36,7 @@
     <table>    
         <thead>
         <tr>
-            <th>Id</th><th>Task name</th><th>Status</th><th>Started</th><th>Updated</th>
+            <th>Id</th><th>Name</th><th>Status</th><th>Started at</th><th></th><th></th>
         </tr>
         </thead>
         @foreach ($project->tasks as $task)
@@ -54,9 +54,23 @@
                 <td>
                     {{ $task->started_at }}
                 </td>
+                <td>
+                    <a href="{{ route ('task.edit', $task->id) }}">
+                    <input type="button" value="Edit" class="btn btn-secondary"></a>
+                </td>
+                <form method="POST" action="{{ route('task.destroy', $task->id) }}">
+                    @csrf
+                    @method('DELETE')
+                    <td>
+                    
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    
+                    </td>
+                </form>
             </tr>
         @endforeach
     </table>            
     <br>
+    <a href="{{ route('task.create') }}"><input type="button" class="btn btn-primary" value="Create new Task"></a>
     <a href="{{ route('project.index') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
 @endsection

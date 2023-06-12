@@ -26,13 +26,33 @@
 
 @section('content')
 
-<?php $visibleboton=false; ?>
-{{-- {{ Auth::user()->role }} --}}
-<?php $visibleboton=false; ?>
-@if(Auth::user()->role=='admin')
-    <?php $visibleboton=true; ?>
-    <br><br>
+{{-- <?php $visibleboton=false; ?> --}}
 
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid container">
+        
+        <a class="navbar-brand" href="#">Task Manager</a>
+        <button class="navbar-toggler" type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#nav" >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>  
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route ('user.index') }}">USERS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}">EXIT</a>
+          </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<h4>Proyectos</h4>
+@if(Auth::user()->role=='admin')
+    <br>
     <table>    
     <thead>
     <tr>
@@ -40,42 +60,35 @@
     </tr>
     </thead>
     @forelse($projects as $project)
-    
-    <tr>
-        <td>
+        <tr>
+            <td>
             {{ $project->id }}
-        </td>
-        <td>
+            </td>
+            <td>
             <a href="{{ route ('project.show', $project->id)}}">{{ $project->name }}</a>
-        </td>
-        <td>
-            {{-- <a href="{{ route ('project.show', $project->id)}}">{{ $project->state }}</a> --}}
+            </td>
+            <td>
             {{ $project->state }}
-        </td>
-        <td> 
+            </td>
+            <td> 
             <a href="{{ route ('project.edit', $project->id) }}">
-            @if ($visibleboton)
-                <input type="button" value="Edit" class="btn btn-secondary"></a>
-            @endif
-        </td>
+            <input type="button" value="Edit" class="btn btn-secondary"></a>
+            </td>
             <form method="POST" action="{{ route('project.destroy', $project->id) }}">
                 @csrf
                 @method('DELETE')
                 <td>
-                @if ($visibleboton)
                     <input type="submit" value="Delete" class="btn btn-danger"/>
-                @endif
                 </td>
             </form>
-    </tr>
+        </tr>
     @empty
         <p>No data.</p>    
     @endforelse
     </table>
     <a href="{{ route('project.create') }}"><input type="button" class="btn btn-primary" value="Create new Project"></a>
-    <a href="{{ url('/home') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
+    {{-- <a href="{{ url('/home') }}"><input type="button" value="Back" class="btn btn-primary"/></a> --}}
 @else
-    <h2>Proyectos</h2>
     <?php
         $user=Auth::user();
         echo "Usuario: ".$user->name."<br>";
@@ -89,26 +102,25 @@
         </thead>
         @foreach ($projects as $project)
             @foreach ($project->tasks as $task)
-            @if ($task->user_id==$user->id)
-                {{-- echo "Proyecto: ".$project->id." ".$project->name."<br>"; --}}
-                <tr>
-                    <td>
+                @if ($task->user_id==$user->id)
+                    <tr>
+                        <td>
                         {{ $project->id }}
-                    </td>
-                    <td>
+                        </td>
+                        <td>
                         {{ $project->name }}
-                    </td>
-                    <td>
+                        </td>
+                        <td>
                         {{ $project->state }}
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
                 {{-- break;             --}}
-            @endif
+                @endif
             @endforeach
         @endforeach
     </table>            
     {{-- <?php redirect()->route('project.show'); ?> --}}
-    <a href="{{ url('/home') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
+    {{-- <a href="{{ url('/home') }}"><input type="button" value="Back" class="btn btn-primary"/></a> --}}
 @endif
 
 @endsection
