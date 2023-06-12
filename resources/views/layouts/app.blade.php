@@ -38,6 +38,29 @@
     </div>
 
     <div class="container align-center p-5">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid container">
+                
+                <a class="navbar-brand" href="#">Task Manager</a>
+                <button class="navbar-toggler" type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#nav" >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>  
+              <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route ('user.index') }}">USERS</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}">EXIT</a>
+                  </li>
+                </ul>
+            </div>
+        </nav>
+        <br>
+        
         @yield('content')
     </div>
     
