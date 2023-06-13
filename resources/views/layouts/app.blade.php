@@ -38,9 +38,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="">PROFILE</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route ('user.index') }}">USERS</a>
-                    </li>
+                    @if(Auth::user()->role=='admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route ('user.index') }}">USERS</a>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}">EXIT</a>
                     </li>

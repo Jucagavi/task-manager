@@ -36,15 +36,12 @@
     <table>    
         <thead>
         <tr>
-            <th>Id</th><th>Name</th><th>Status</th><th>Started at</th><th></th><th></th>
+            <th>Name</th><th>Status</th><th>Started at</th><th></th><th></th>
         </tr>
         </thead>
         @foreach ($project->tasks as $task)
             {{-- echo "Proyecto: ".$project->id." ".$project->name."<br>"; --}}
             <tr>
-                <td>
-                    {{ $task->id }}
-                </td>
                 <td>
                     {{ $task->name }}
                 </td>
