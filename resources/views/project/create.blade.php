@@ -37,5 +37,5 @@
         <input type="submit" value = "Create" class="btn btn-primary"/>
     </form>
     <br>
-    <a href="{{ route ('project.index')}}"><input type="button" value="Back" class="btn btn-primary"></a>
+    <a href="{{ route ('projects.index')}}"><input type="button" value="Back" class="btn btn-primary"></a>
 @endsection

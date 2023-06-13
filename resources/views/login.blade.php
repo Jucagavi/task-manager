@@ -21,7 +21,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #0d6efd;
+            background: grey;
         }
         
         .login {
@@ -56,7 +56,7 @@
 <body>
 
     <div class="login">
-
+        @include('alerts.alerts')
         <h1 class="text-center">Project Manager</h1>
         
         <form method="POST" action="{{ route('init-session') }}">

@@ -78,6 +78,6 @@
     @endforelse
 </table>
 <a href="{{ route('user.create') }}"><input type="button" class="btn btn-primary" value="Create new User"></a>
-<a href="{{ route('project.index') }}"><input type="button" value="Back" class="btn btn-primary" /></a>
+<a href="{{ route('projects.index') }}"><input type="button" value="Back" class="btn btn-primary" /></a>
 
 @endsection         

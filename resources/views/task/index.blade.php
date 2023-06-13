@@ -60,7 +60,7 @@
             {{ $task->user_id }}
         </td>
         <td> 
-            <a href="{{ route ('task.edit', $task->id) }}">
+            {{-- <a href="{{ route ('task.edit', $task->id) }}"> --}}
             @if ($visibleboton)
                 <input type="button" value="Edit" class="btn btn-secondary"></a>
             @endif
@@ -79,7 +79,7 @@
         <p>No data.</p>    
     @endforelse
 </table>
-<a href="{{ route('task.create') }}"><input type="button" class="btn btn-primary" value="Create new Task"></a>
-<a href="{{ url('/home') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
+{{-- <a href="{{ route('task.create') }}"><input type="button" class="btn btn-primary" value="Create new Task"></a> --}}
+<a href="{{ route('projects.index') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
 
 @endsection         

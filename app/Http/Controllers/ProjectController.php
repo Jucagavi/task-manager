@@ -24,8 +24,8 @@ class ProjectController extends Controller
         $project->state = $request->state;
         $project->save();
 
-        session()->flash('success', 'Proyeto creado correctamente.');
-        return redirect()->route('project.index');
+        session()->flash('success', 'Proyecto creado correctamente.');
+        return redirect()->route('projects.index');
     }
 
     public function edit (Project $project) {
@@ -35,7 +35,7 @@ class ProjectController extends Controller
     public function update (Request $request, Project $project) {
         $project->update($request->all());
         session()->flash('success', 'Proyecto actualizado correctamente.');
-        return redirect()->route('project.index');
+        return redirect()->route('projects.index');
     }
 
     // public function show (Project $project) {
@@ -55,11 +55,11 @@ class ProjectController extends Controller
         foreach ($project->tasks as $task) {
             if ($task->state!="Pendiente"){ 
                 session()->flash('failure', 'No se puede eliminar porque tiene tareas en estado distinto de pendiente.');
-                return redirect()->route('project.index');
+                return redirect()->route('projects.index');
             }
         }
         $project->delete();
         session()->flash('success', 'Proyecto borrado correctamente.');
-        return redirect()->route('project.index');
+        return redirect()->route('projects.index');
     }
 }

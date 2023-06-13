@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section ('content')
-
+    <h4>Proyecto: {{ $project->name }} </h4>
+    <br>
     <form method="POST" action="{{ route ('task.update', $task->id) }}">
         @method('PUT')
         @csrf
@@ -22,17 +23,7 @@
                 </td>
             </tr>
             <tr>
-                <td>Project:</td>
-                <td> 
-                    <select name="project_id" required="required">
-                        <option value="{{ $task->project_id }}">{{ $task->project->name }}</option>
-                        @foreach ($projects as $project)
-                            <option value="{{ $project->id }}">{{ $project->name }}</option>    
-                        @endforeach                        
-                    </select>
-                </td>
-                {{-- <td><input type="text" name="project_id" value="{{ $task->project_id}}"/></td> --}}
-            </tr>
+                <input hidden type="text" name="project_id" value="{{ $project->id }}"/>
             <tr>
                 <td>User Id:</td>
                 <td>
@@ -50,7 +41,7 @@
         <input type="submit" value="Update" class="btn btn-primary"/>
     </form>
     <br>
-    <a href="{{ route('task.index') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
+    <a href="{{ route('projects.index') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
 @endsection
 
 

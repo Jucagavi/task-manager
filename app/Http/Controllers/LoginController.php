@@ -35,8 +35,9 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
-            return redirect()->intended(route('project.index'));
+            return redirect()->intended(route('projects.index'));
         } else {
+            session()->flash('failure', 'No coincide este email con este password.');
             return redirect('login');
         }
 

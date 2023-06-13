@@ -26,7 +26,7 @@
 
 @section('content')
 
-    <h2>Tareas del proyecto: {{ $project->name }}</h2>
+    <h4>Tareas del proyecto: {{ $project->name }}</h4>
     <?php
         $user=Auth::user();
         echo "Usuario: ".$user->name."<br>";
@@ -55,22 +55,20 @@
                     {{ $task->started_at }}
                 </td>
                 <td>
-                    <a href="{{ route ('task.edit', $task->id) }}">
+                    <a href="{{ route ('task.edit', [$task->id, $project]) }}">
                     <input type="button" value="Edit" class="btn btn-secondary"></a>
                 </td>
                 <form method="POST" action="{{ route('task.destroy', $task->id) }}">
                     @csrf
                     @method('DELETE')
                     <td>
-                    
                         <input type="submit" value="Delete" class="btn btn-danger" />
-                    
                     </td>
                 </form>
             </tr>
         @endforeach
     </table>            
     <br>
-    <a href="{{ route('task.create') }}"><input type="button" class="btn btn-primary" value="Create new Task"></a>
-    <a href="{{ route('project.index') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
+    <a href="{{ route('task.create', $project) }}"><input type="button" class="btn btn-primary" value="Add new Task"></a>
+    <a href="{{ route('projects.index') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
 @endsection

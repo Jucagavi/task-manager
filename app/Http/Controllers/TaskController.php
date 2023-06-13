@@ -14,10 +14,9 @@ class TaskController extends Controller
         return view('task.index', compact('tasks'));
     }
 
-    public function create() {
-        $projects=Project::all();
+    public function create(Project $project) {
         $users=User::all();
-        return view('task.create', compact('projects', 'users'));
+        return view('task.create', compact('project', 'users'));
     }
 
     public function store (Request $request) {
@@ -28,18 +27,19 @@ class TaskController extends Controller
         $task->project_id = $request->project_id;
         $task->save();
 
-        return redirect()->route('task.index');
+        session()->flash('success', 'Tarea asignada correctamente.');
+        return redirect()->route('projects.index');
     }
 
-    public function edit (Task $task) {
-        $projects=Project::all();
+    public function edit (Task $task, Project $project) {
         $users=User::all();
-        return view('task.edit', compact('task', 'projects', 'users'));
+        return view('task.edit', compact('task', 'project', 'users'));
     }
 
     public function update (Request $request, Task $task) {
         $task->update($request->all());
-        return redirect()->route('task.index');
+        session()->flash('success', 'Tarea actualizada correctamente.');
+        return redirect()->route('projects.index');
     }
 
     // public function show (Task $task) {
@@ -48,8 +48,8 @@ class TaskController extends Controller
 
     public function destroy (Task $task) {
         $task->delete();
-        return redirect()->route('task.index');
+        session()->flash('success', 'Tarea borrada correctamente.');
+        return redirect()->route('projects.index');
     }
-
 
 }

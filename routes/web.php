@@ -32,7 +32,7 @@ Route::put('user/update/{user}', [UserController::class, 'update'])->middleware(
 Route::delete('user/destroy/{user}', [UserController::class, 'destroy'])->middleware('auth')->name('user.destroy');
 
 
-Route::get('/project', [ProjectController::class, 'index'])->middleware('auth')->name('project.index');
+Route::get('/projects', [ProjectController::class, 'index'])->middleware('auth')->name('projects.index');
 Route::get('/project/create', [ProjectController::class, 'create'])->middleware('auth')->name('project.create');
 Route::post('/project/store', [ProjectController::class, 'store'])->middleware('auth')->name('project.store');
 Route::get('/project/edit/{project}', [ProjectController::class, 'edit'])->middleware('auth')->name('project.edit');
@@ -41,9 +41,9 @@ Route::get('/project/show/{project}', [ProjectController::class, 'show'])->middl
 Route::delete('project/destroy/{project}', [ProjectController::class, 'destroy'])->middleware('auth')->name('project.destroy');
 
 Route::get('/task', [TaskController::class, 'index'])->middleware('auth')->name('task.index');
-Route::get('/task/create', [TaskController::class, 'create'])->middleware('auth')->name('task.create');
+Route::get('/task/create/{project}', [TaskController::class, 'create'])->middleware('auth')->name('task.create');
 Route::post('/task/store', [TaskController::class, 'store'])->middleware('auth')->name('task.store');
-Route::get('/task/edit/{task}', [TaskController::class, 'edit'])->middleware('auth')->name('task.edit');
+Route::get('/task/edit/{task}/{project}', [TaskController::class, 'edit'])->middleware('auth')->name('task.edit');
 Route::put('task/update/{task}', [TaskController::class, 'update'])->middleware('auth')->name('task.update');
 // Route::get('/task/show/{task}', [TaskController::class, 'show'])->name('task.show');
 Route::delete('task/destroy/{task}', [TaskController::class, 'destroy'])->middleware('auth')->name('task.destroy');

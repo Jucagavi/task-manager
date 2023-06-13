@@ -6,8 +6,9 @@
 
 
 @section('content')
-    
-    <form method="POST" action="{{ route('task.store') }}">
+    <h4>Proyecto: {{ $project->name }} </h4>
+    <br>
+    <form method="POST" action="{{ route('task.store') }}">    
         @csrf
         <table>
             <tr>
@@ -40,22 +41,14 @@
                             <option value="{{ $user->id }}">{{ $user->name }}</option>    
                         @endforeach                        
                 </select>
-                </td>
-            <tr>
-                <td>Project: </td>
-                <td> 
-                    <select name="project_id" required="required">
-                        <option value="">-- Eliga proyecto --</option>
-                        @foreach ($projects as $project)
-                            <option value="{{ $project->id }}">{{ $project->name }}</option>    
-                        @endforeach                        
-                    </select>
-                </td>
+                </td>   
+            <tr>    
+                <input hidden type=text name="project_id" value="{{ $project->id }}"/>         
             </tr>
         </table>
         <br>
         <input type="submit" value = "Create" class="btn btn-primary"/>
     </form>
     <br>
-    <a href="{{ route('task.index') }}"><input type="button" class="btn btn-primary" value="Back"/></a>
+    <a href="{{ route('projects.index') }}"><input type="button" class="btn btn-primary" value="Back"/></a>
 @endsection
