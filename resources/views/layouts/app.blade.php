@@ -9,26 +9,11 @@
 
     <title>Task Manager</title>
 
-    {{-- <style>
-        .cabecera {
-            text-align: center;
-            font-size: x-large;
-            margin-bottom: 100px;
-            background-color: orchid;
-        }
-        
-        .contenido {
-            width: 700px;
-            margin: 0 auto;
-            background-color: #632432;
-        }
-
-        /* .contenido table {
-            border: ;
-            background-color: aquamarine
-        } */
-        
-    </style> --}}
+    <style>
+        .navbar-custom {
+            background-color: limegreen;
+        } 
+    </style>
 </head>
 
 <body class="bg-light text-black">
@@ -38,7 +23,7 @@
     </div>
 
     <div class="container align-center p-5">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg navbar-custom">
             <div class="container-fluid container">
                 
                 <a class="navbar-brand" href="#">Task Manager</a>
@@ -50,12 +35,15 @@
             </div>  
               <div class="collapse navbar-collapse" id="nav">
                 <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ route ('user.index') }}">USERS</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}">EXIT</a>
-                  </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">PROFILE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route ('user.index') }}">USERS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}">EXIT</a>
+                    </li>
                 </ul>
             </div>
         </nav>
