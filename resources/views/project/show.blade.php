@@ -25,18 +25,25 @@
 @endsection
 
 @section('content')
-
+    
     <h4>Tareas del proyecto: {{ $project->name }}</h4>
     <?php
         $user=Auth::user();
         echo "Usuario: ".$user->name."<br>";
+        $confirm=false;
     ?>
     
     <br>
+    @foreach ($project->tasks as $task)
+       <?php
+            $confirm=true;
+        ?>
+    @endforeach
+    @if ($confirm)
     <table>    
         <thead>
         <tr>
-            <th>Name</th><th>Status</th><th>Started at</th><th></th><th></th>
+            <th>Name</th><th>Status</th><th>Started at</th><th>Hours worked</th><th></th><th></th>
         </tr>
         </thead>
         @foreach ($project->tasks as $task)
@@ -52,6 +59,9 @@
                     {{ $task->started_at }}
                 </td>
                 <td>
+                    {{ 100 }}
+                </td>
+                <td>
                     <a href="{{ route ('task.edit', [$task->id, $project]) }}">
                     <input type="button" value="Edit" class="btn btn-secondary"></a>
                 </td>
@@ -65,7 +75,11 @@
             </tr>
         @endforeach
     </table>            
-    <br>
+    <br>    
+    @else
+        {{-- session()->flash('failure', 'No existen tareas en este proyecto.'); --}}
+        @include('alerts.alerts')
+    @endif
     <a href="{{ route('task.create', $project) }}"><input type="button" class="btn btn-primary" value="Add new Task"></a>
     <a href="{{ route('projects.index') }}"><input type="button" value="Back" class="btn btn-primary"/></a>
 @endsection
