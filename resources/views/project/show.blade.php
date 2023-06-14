@@ -25,11 +25,9 @@
 @endsection
 
 @section('content')
-    
+    @include('alerts.alerts')
     <h4>Tareas del proyecto: {{ $project->name }}</h4>
     <?php
-        $user=Auth::user();
-        echo "Usuario: ".$user->name."<br>";
         $confirm=false;
     ?>
     
@@ -77,8 +75,7 @@
     </table>            
     <br>    
     @else
-        {{-- session()->flash('failure', 'No existen tareas en este proyecto.'); --}}
-        @include('alerts.alerts')
+        <?php session()->flash('failure', 'No existen tareas en este proyecto.'); ?>
     @endif
     <a href="{{ route('task.create', $project) }}"><input type="button" class="btn btn-primary" value="Add new Task"></a>
     <a href="{{ route('projects.index') }}"><input type="button" value="Back" class="btn btn-primary"/></a>

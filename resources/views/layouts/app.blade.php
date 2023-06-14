@@ -36,6 +36,9 @@
               <div class="collapse navbar-collapse" id="nav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
+                        <a class="nav-link" href=""> {{ Auth::user()->name }} </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="">PROFILE</a>
                     </li>
                     @if(Auth::user()->role=='admin')

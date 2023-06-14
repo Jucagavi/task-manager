@@ -71,7 +71,7 @@
 @else
     <?php
         $user=Auth::user();
-        echo "Usuario: ".$user->name."<br>";
+        // echo "Usuario: ".$user->name."<br>";
     ?>
     <br>
     <table>    
