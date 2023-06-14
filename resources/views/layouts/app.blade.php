@@ -39,7 +39,7 @@
                         <a class="nav-link" href=""> {{ Auth::user()->name }} </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">PROFILE</a>
+                        <a class="nav-link" href="{{ route('user.show', Auth::user()) }}">PROFILE</a>
                     </li>
                     @if(Auth::user()->role=='admin')
                         <li class="nav-item">

@@ -29,13 +29,16 @@
 
 @include('alerts.alerts')
 
-{{ Auth::user()->role }}
+<h4>Users</h4>
+
+<a href="{{ route('user.create') }}"><input type="button" class="btn btn-primary" value="Create new User"></a>
+<a href="{{ route('projects.index') }}"><input type="button" value="Back" class="btn btn-primary" /></a>
+<br><br>
+
 <?php $visibleboton=false; ?>
 @if(Auth::user()->role=='admin')
     <?php $visibleboton=true; ?>
 @endif
-
-<br><br>
 
 <table>    
     <thead>
@@ -77,7 +80,5 @@
         <p>No data.</p>    
     @endforelse
 </table>
-<a href="{{ route('user.create') }}"><input type="button" class="btn btn-primary" value="Create new User"></a>
-<a href="{{ route('projects.index') }}"><input type="button" value="Back" class="btn btn-primary" /></a>
 
 @endsection         

@@ -41,9 +41,9 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
-    // public function show (User $user) {
-    //     return view('user.show', compact('user'));
-    // }
+    public function show (User $user) {
+        return view('user.show', compact('user'));
+    }
 
     public function destroy (User $user) {
         $tasks = Task::all()->where('user_id', $user->id);

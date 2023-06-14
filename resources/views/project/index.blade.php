@@ -31,6 +31,8 @@
 {{-- <?php $visibleboton=false; ?> --}}
 
 <h4>Proyectos</h4>
+<a href="{{ route('project.create') }}"><input type="button" class="btn btn-primary" value="Create new Project"></a>
+<br>
 @if(Auth::user()->role=='admin')
     <br>
     <table>    
@@ -66,7 +68,7 @@
         <p>No data.</p>    
     @endforelse
     </table>
-    <a href="{{ route('project.create') }}"><input type="button" class="btn btn-primary" value="Create new Project"></a>
+    
     {{-- <a href="{{ url('/home') }}"><input type="button" value="Back" class="btn btn-primary"/></a> --}}
 @else
     <?php

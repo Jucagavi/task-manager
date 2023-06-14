@@ -28,7 +28,7 @@ Route::get('/user/create', [UserController::class, 'create'])->middleware('auth'
 Route::post('/user/store', [UserController::class, 'store'])->middleware('auth')->name('user.store');
 Route::get('/user/edit/{user}', [UserController::class, 'edit'])->middleware('auth')->name('user.edit');
 Route::put('user/update/{user}', [UserController::class, 'update'])->middleware('auth')->name('user.update');
-// Route::get('/user/show/{user}', [UserController::class, 'show'])->name('user.show');
+Route::get('/user/show/{user}', [UserController::class, 'show'])->middleware('auth')->name('user.show');
 Route::delete('user/destroy/{user}', [UserController::class, 'destroy'])->middleware('auth')->name('user.destroy');
 
 
