@@ -6,16 +6,14 @@
 <form method="POST" action="{{ route ('project.update', $project->id) }}">
     @method('PUT')
     @csrf
-    <table>
-        <tr>
-            <td>Project name:</td>
-            <td><input type="text" name="name" value="{{ $project->name }}" required="required"/></td>
-        </tr>
-        <tr>
-            <td>Status:</td>
-            <td><input type="text" name="state" value="{{ $project->state }}"/></td>
-        </tr>
-    </table>
+    <div class="form-group mb-3">
+        <label for="name">Project Name:</label>
+        <input type="text" class="form-control" value="{{ $project->name }}" name="name" id="name" required="required">
+    </div>
+    <div class="form-group mb-3">
+        <label for="state">Status:</label>
+        <input type="text" class="form-control" value="{{ $project->state }}" name="state" id="state" required="required">
+    </div>
     <br>
     <input type="submit" value="Update" class="btn btn-primary" />
 </form>

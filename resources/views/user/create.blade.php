@@ -11,9 +11,9 @@
         @csrf
         
         <div class="form-group mb-3">
-            <label for="email">Name:</label>
+            <label for="name">Name:</label>
             <input type="text" class="form-control" name="name" id="name" required="required" placeholder="Enter name">
-          </div>
+        </div>
         <div class="form-group mb-3">
             <label for="email">Email:</label>
             <input type="email" class="form-control" name="email" id="email" required="required" placeholder="Enter email">

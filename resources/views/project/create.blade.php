@@ -4,37 +4,24 @@
     
 @endsection
 
-<style>
+{{-- <style>
     body {
         background-color: #632432;
     }
-</style>
+</style> --}}
 @section('content')
     <form method="POST" action="{{ route('project.store') }}">
         @csrf
-        <table>
-            <tr>
-                <td>Name:</td>
-                <td>
-                    <input type=text name="name" required="required"/>
-                    {{-- @error('title')
-                        <p style="color: red;">{{ $message }}</p>
-                    @enderror --}}
-                </td>
-            </tr>
-
-            <tr>
-                <td>Status:</td>
-                <td> 
-                    <input type=text name="state" />
-                    {{-- @error('description')
-                        <p style="color: red;">{{ $message }}</p>
-                    @enderror --}}
-                </td>
-            </tr>
-        </table>
+        <div class="form-group mb-3">
+            <label for="name">Project Name:</label>
+            <input type="text" class="form-control" name="name" id="name" required="required" placeholder="Enter name">
+        </div>
+        <div class="form-group mb-3">
+            <label for="state">Status:</label>
+            <input type="text" class="form-control" name="state" id="state" required="required" placeholder="Enter status">
+        </div>
         <br>
-        <input type="submit" value = "Create" class="btn btn-primary"/>
+        <input type="submit" value = "Save" class="btn btn-primary"/>
     </form>
     <br>
     <a href="{{ route ('projects.index')}}"><input type="button" value="Back" class="btn btn-primary"></a>
