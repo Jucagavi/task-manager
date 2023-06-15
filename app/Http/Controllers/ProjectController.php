@@ -38,11 +38,6 @@ class ProjectController extends Controller
         return redirect()->route('projects.index');
     }
 
-    // public function show (Project $project) {
-    //     return view('project.show', compact('project'));
-    // }
-
-    // vista show de pruebas
     public function show(Int $id) {
         $project = Project::find($id);
         $tasks = Task::all();

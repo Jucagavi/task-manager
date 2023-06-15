@@ -13,7 +13,7 @@
     <form method="POST" action="{{ route('project.store') }}">
         @csrf
         <div class="form-group mb-3">
-            <label for="name">Project Name:</label>
+            <label for="name">Project name:</label>
             <input type="text" class="form-control" name="name" id="name" required="required" placeholder="Enter name">
         </div>
         <div class="form-group mb-3">

@@ -6,7 +6,7 @@
         @method('PUT')
         @csrf
         <div class="form-group mb-3">
-            <label for="name">Name:</label>
+            <label for="name">User name:</label>
             <input type="text" class="form-control" value="{{ $user->name }}" name="name" id="name" required="required">
         </div>
         <div class="form-group mb-3">

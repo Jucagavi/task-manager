@@ -6,37 +6,19 @@
     <form method="POST" action="{{ route ('task.update', $task->id) }}">
         @method('PUT')
         @csrf
-        <table>
-            <tr>
-                <td>Task name:</td>
-                <td><input type="text" name="name" value="{{ $task->name }}" required="required"/></td>
-            </tr>
-            <tr>
-                <td>Status:</td>
-                <td>
-                    <select name="state" required="required">
-                    <option value="{{ $task->state }}">{{ $task->state }}</option>
-                    <option value="Pendiente">Pendiente</option>
-                    <option value="En progreso">En progreso</option>
-                    <option value="Finalizado">Finalizado</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <input hidden type="text" name="project_id" value="{{ $project->id }}"/>
-            <tr>
-                <td>User Id:</td>
-                <td>
-                    <select name="user_id" required="required">
-                            <option value="">-- Eliga usuario --</option>
-                            @foreach ($users as $user)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>    
-                            @endforeach                        
-                    </select>
-                    </td>
-                {{-- <td><input type="text" name="user_id" value="{{ $task->user_id}}"/></td> --}}
-            </tr>
-        </table>
+        
+        <div class="form-group mb-3">
+            <label for="name">Task name:</label>
+            <input type="text" class="form-control" value="{{ $task->name }}" name="name" id="name" required="required" placeholder="Enter name">
+        </div>
+        <div class="form-group mb-3">
+            <select class="form-select" aria-label="Default select example" name="state" required="required">
+                <option value="{{ $task->state }}">{{ $task->state }}</option>
+                <option value="Pendiente">Pendiente</option>
+                <option value="En progreso">En progreso</option>
+                <option value="Finalizado">Finalizado</option>
+            </select>
+        </div>        
         <br>
         <input type="submit" value="Update" class="btn btn-primary"/>
     </form>

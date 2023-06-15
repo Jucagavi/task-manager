@@ -7,7 +7,7 @@
     @method('PUT')
     @csrf
     <div class="form-group mb-3">
-        <label for="name">Project Name:</label>
+        <label for="name">Project name:</label>
         <input type="text" class="form-control" value="{{ $project->name }}" name="name" id="name" required="required">
     </div>
     <div class="form-group mb-3">

@@ -11,7 +11,7 @@
         @csrf
         
         <div class="form-group mb-3">
-            <label for="name">Name:</label>
+            <label for="name">User name:</label>
             <input type="text" class="form-control" name="name" id="name" required="required" placeholder="Enter name">
         </div>
         <div class="form-group mb-3">
@@ -29,7 +29,7 @@
                 <option value="worker">worker</option>
             </select>
         </div>
-        <input type="submit" value = "Create" class="btn btn-primary"/>
+        <input type="submit" value = "Save" class="btn btn-primary"/>
     </form>  
     <br>
     <a href="{{ route('user.index') }}"><input type="button" class="btn btn-primary" value="Back"/></a>
