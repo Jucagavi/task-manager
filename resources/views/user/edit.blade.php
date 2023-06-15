@@ -5,31 +5,25 @@
     <form method="POST" action="{{ route ('user.update', $user->id) }}">
         @method('PUT')
         @csrf
-        <table>
-            <tr>
-                <td>User name:</td>
-                <td><input type="text" name="name" value="{{ $user->name }}"/></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><input type="email" name="email" value="{{ $user->email }}"/></td>
-            </tr>
-            <tr>
-                <td>Password: </td>
-                <td><input type=password name="password" required="required" /></td>
-            </tr>
-            <tr>
-                <td>Role:</td>
-                <td>
-                    <select name="role" required="required">
-                        <option value="{{ $user->role }}">{{ $user->role }}</option>
-                        <option value="">-- Elija role --</option>
-                        <option value="admin">Admin</option>
-                        <option value="worker">Worker</option>
-                    </select>
-                </td>
-            </tr>
-        </table>
+        <div class="form-group mb-3">
+            <label for="email">Name:</label>
+            <input type="text" class="form-control" value="{{ $user->name }}" name="name" id="name" required="required">
+        </div>
+        <div class="form-group mb-3">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" value="{{ $user->email }}" name="email" id="email" required="required">
+        </div>
+        <div class="form-group mb-3">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" name="password" id="password" required="required">
+        </div>
+        <div class="form-group mb-3">
+            <select class="form-select" aria-label="Default select example" name="role" required="required">
+                <option value="{{ $user->role }}">{{ $user->role }}</option>
+                <option value="admin">admin</option>
+                <option value="worker">worker</option>
+            </select>
+        </div>
         <br>
         <input type="submit" value="Update" class="btn btn-primary"/>
     </form>
