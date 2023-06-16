@@ -5,6 +5,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HourController;
 // use App\Models\Project;
 // use App\Models\User;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ;
 
@@ -39,6 +40,9 @@ Route::get('/project/edit/{project}', [ProjectController::class, 'edit'])->middl
 Route::put('project/update/{project}', [ProjectController::class, 'update'])->middleware('auth')->name('project.update');
 Route::get('/project/show/{project}', [ProjectController::class, 'show'])->middleware('auth')->name('project.show');
 Route::delete('project/destroy/{project}', [ProjectController::class, 'destroy'])->middleware('auth')->name('project.destroy');
+
+Route::get('/hour/create/{task}', [HourController::class, 'create'])->middleware('auth')->name('hour.create');
+Route::post('/hour/store', [HourController::class, 'store'])->middleware('auth')->name('hour.store');
 
 Route::get('/task', [TaskController::class, 'index'])->middleware('auth')->name('task.index');
 Route::get('/task/create/{project}', [TaskController::class, 'create'])->middleware('auth')->name('task.create');
